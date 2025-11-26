@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#topicSelect {
+  font-size: 20px;
+  padding: 5px;
+}
