@@ -303,13 +303,40 @@ main {
   text-align: right;
 }
 
-/* -------- 第二層 Game 首頁：四款遊戲選單 -------- */
+/* -------- 第二層 Game 首頁：本次練習資訊 + 四款遊戲選單 -------- */
 
+/* 第二層 main 容器（game.html） */
+.game-home-main {
+  max-width: 960px;
+  margin: 0 auto 40px;
+  padding: 0 16px 32px;
+}
+
+/* 「本次練習資訊」卡片：整個內容區塊等寬 */
+.game-home-info-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 24px;
+}
+
+/* 選遊戲的 section */
+.game-home-games-section {
+  margin-top: 12px;
+}
+
+/* 四個遊戲卡片容器：預設至少 2 欄，避免一行只有 1 個 */
 .game-menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
+  gap: 16px;
   margin-top: 10px;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+}
+
+/* 寬一點時，改成 1 行 4 個 */
+@media (min-width: 900px) {
+  .game-menu-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .game-menu-card {
@@ -894,7 +921,7 @@ main {
 }
 
 /* 火車動畫 */
-/* 正常出發：從目前位置一路開到左邊外面 */
+/* 正常出發：從目前位置一路開到左邊外面（實際距離由 JS 控制） */
 .train-move {
   transform: translateX(-120%);
 }
@@ -1016,67 +1043,120 @@ main {
 }
 
 /* -------- RWD 大致調整 -------- */
+
+/* iPad / 小螢幕 notebook 調整 */
 @media (max-width: 900px) {
   .home-main {
     max-width: 100%;
   }
+
   .game-main-wrapper {
     flex-direction: column;
   }
+
   .game-sidebar {
     width: 100%;
   }
+
   .stage1-layout,
   .stage3-layout {
     flex-direction: column;
   }
+
   .stage3-right {
     width: 100%;
   }
 }
 
+/* 手機調整：字體放大、留白收窄、卡片變大一點 */
+@media (max-width: 768px) {
+  .home-header h1 {
+    font-size: 28px;
+  }
 
-/* ===== 第二層：Game 首頁版面微調 ===== */
+  .home-subtitle {
+    font-size: 14px;
+  }
 
-/* 讓第二層的主內容區塊固定在一個適合 iPad 的寬度置中 */
-.game-home-main {
-  max-width: 960px;        /* 主要內容寬度：iPad / 桌機都好看 */
-  margin: 0 auto 40px;     /* 上下留白，左右置中 */
-  padding: 0 16px 32px;
-}
+  .home-main {
+    padding: 12px 12px 24px;
+  }
 
-/* 「本次練習資訊」卡片：改成吃滿內容區塊寬度 */
-.game-home-info-card {
-  width: 100%;             /* 不再是窄窄一條，而是整個 content 寬 */
-  max-width: 100%;         /* 跟 .game-home-main 同寬 */
-  margin: 0 auto 24px;
-}
+  .home-intro-card {
+    padding: 14px 16px;
+  }
 
-/* 選擇遊戲區塊本身就維持置中即可 */
-.game-home-games-section {
-  margin-top: 12px;
-}
+  .topic-card {
+    padding: 12px 12px;
+  }
 
-/* 小遊戲卡片容器：用 grid 排版 */
-.game-card-grid {
-  display: grid;
-  gap: 16px;
-  margin-top: 14px;
+  .topic-title {
+    font-size: 15px;
+  }
 
-  /* 預設：一律至少 2 欄，避免只有 1 欄導致畫面太長 */
-  grid-template-columns: repeat(2, minmax(140px, 1fr));
-}
+  .game-header {
+    padding-top: 16px;
+  }
 
-/* 螢幕夠寬（例如 iPad 橫放、桌機）→ 1 行 4 個卡片 */
-@media (min-width: 900px) {
-  .game-card-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .game-header h1 {
+    font-size: 24px;
+  }
+
+  .game-subtitle {
+    font-size: 13px;
+  }
+
+  .game-home-main {
+    padding: 0 12px 28px;
+  }
+
+  .game-sidebar {
+    font-size: 13px;
+  }
+
+  .stage1-en {
+    font-size: 22px;
+  }
+
+  .stage1-zh {
+    font-size: 15px;
+  }
+
+  .word-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .match-card {
+    flex: 0 0 calc(50% - 6px);
+    font-size: 15px;
+  }
+
+  .stage3-question-text,
+  .stage3-question-prompt {
+    font-size: 16px;
+  }
+
+  .stage3-option-card {
+    font-size: 16px;
+    padding: 12px 8px;
+  }
+
+  .stage4-zh {
+    font-size: 18px;
+  }
+
+  .stage4-en-hint {
+    font-size: 13px;
   }
 }
 
-/* 非常窄的手機也維持 2 欄，但允許卡片更小一點 */
+/* 非常窄的小手機，主題 & 遊戲卡片維持兩欄 */
 @media (max-width: 420px) {
-  .game-card-grid {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  .topic-grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+
+  .game-menu-grid {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
   }
 }
