@@ -1034,3 +1034,49 @@ main {
     width: 100%;
   }
 }
+
+
+/* ===== 第二層：Game 首頁版面微調 ===== */
+
+/* 讓第二層的主內容區塊固定在一個適合 iPad 的寬度置中 */
+.game-home-main {
+  max-width: 960px;        /* 主要內容寬度：iPad / 桌機都好看 */
+  margin: 0 auto 40px;     /* 上下留白，左右置中 */
+  padding: 0 16px 32px;
+}
+
+/* 「本次練習資訊」卡片：改成吃滿內容區塊寬度 */
+.game-home-info-card {
+  width: 100%;             /* 不再是窄窄一條，而是整個 content 寬 */
+  max-width: 100%;         /* 跟 .game-home-main 同寬 */
+  margin: 0 auto 24px;
+}
+
+/* 選擇遊戲區塊本身就維持置中即可 */
+.game-home-games-section {
+  margin-top: 12px;
+}
+
+/* 小遊戲卡片容器：用 grid 排版 */
+.game-card-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 14px;
+
+  /* 預設：一律至少 2 欄，避免只有 1 欄導致畫面太長 */
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+}
+
+/* 螢幕夠寬（例如 iPad 橫放、桌機）→ 1 行 4 個卡片 */
+@media (min-width: 900px) {
+  .game-card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* 非常窄的手機也維持 2 欄，但允許卡片更小一點 */
+@media (max-width: 420px) {
+  .game-card-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
