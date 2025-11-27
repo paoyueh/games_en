@@ -190,7 +190,7 @@ function getWordVisual(word) {
     const firstEmoji = word.emoji.toString().split(/\s+/)[0];
     return `<span>${firstEmoji}</span>`;
   }
-  return `<span>📘</span>`;
+  return `<span>❔</span>`;
 }
 
 /** 共用煙火效果（若頁面有 fireworks-overlay 元素的話） */
