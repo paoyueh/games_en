@@ -35,8 +35,10 @@ function prepareStage4Train() {
   const pool = document.getElementById("stage4-letter-pool");
   const progress = document.getElementById("stage4-progress");
 
+  // 重置火車狀態
   train.classList.remove("train-move", "train-flash");
   train.style.visibility = "visible";
+  train.style.transition = "none";
   train.style.transform = "translateX(0)";
 
   cars.innerHTML = "";
@@ -46,15 +48,17 @@ function prepareStage4Train() {
   // 隨機挑一個單字
   const randIndex = Math.floor(Math.random() * ACTIVE_WORDS.length);
   stage4CurrentWord = ACTIVE_WORDS[randIndex];
+
   const zh = stage4CurrentWord.zh;
   const visual = getWordVisual(stage4CurrentWord);
 
   document.getElementById("stage4-zh").textContent = zh;
   document.getElementById("stage4-img").innerHTML = visual;
 
-  // 題目時念一次英文
+  // 題目一出來念一次英文
   speak(stage4CurrentWord.en, "en-US");
 
+  // 正確拼字（只保留 a-z）
   stage4Answer = (stage4CurrentWord.en || "")
     .toLowerCase()
     .replace(/[^a-z]/g, "");
@@ -69,7 +73,7 @@ function prepareStage4Train() {
     cars.appendChild(slot);
   });
 
-  // 建立字母池
+  // 建立字母池（亂數順序）
   const shuffled = shuffleArray(letters);
   shuffled.forEach((ch, idx) => {
     const btn = document.createElement("button");
@@ -124,6 +128,7 @@ function onStage4Start() {
   if (stage4GameOver) return;
 
   const train = document.getElementById("stage4-train");
+  const area = document.getElementById("stage4-train-area");
   const cars = document.querySelectorAll("#stage4-train-cars .letter-slot");
   const progress = document.getElementById("stage4-progress");
 
@@ -134,11 +139,26 @@ function onStage4Start() {
   const correct = spelling === stage4Answer && spelling.length > 0;
 
   if (correct) {
+    // ✅ 答對：火車一路開到內容區塊最左側，再換下一題
     progress.textContent = "太棒了！拼字正確，火車出發囉～";
     speak(stage4CurrentWord.en, "en-US");
 
+    // 計算要往左移動多少距離：從目前位置 → 左邊界
+    const areaWidth = area.clientWidth;
+    const trainWidth = train.offsetWidth;
+    let distance = areaWidth - trainWidth;
+    if (distance < 0) distance = 0;
+
+    // 先重置，再啟動動畫
     train.classList.remove("train-flash");
-    train.classList.add("train-move");
+    train.style.transition = "none";
+    train.style.transform = "translateX(0)";
+
+    // 下一幀才加 transition，避免瞬移
+    requestAnimationFrame(() => {
+      train.style.transition = "transform 1.2s ease";
+      train.style.transform = `translateX(-${distance}px)`;
+    });
 
     stage4DoneCount++;
     document.getElementById("stage4-done").textContent =
@@ -150,8 +170,9 @@ function onStage4Start() {
       } else {
         prepareStage4Train();
       }
-    }, 1700);
+    }, 1300);
   } else {
+    // ❌ 答錯：閃一下後換題
     progress.textContent = "這次拼錯了，火車閃一下，換下一題試試看。";
 
     train.classList.remove("train-move");
