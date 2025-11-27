@@ -7,7 +7,7 @@
 </head>
 <body>
   <header class="game-header">
-    <h1>第 1 階段：看圖認識單字 + 拼字練習</h1>
+    <h1>第 1 階段：看圖認識單字 ＋ 拼字練習</h1>
     <p class="game-subtitle">先從左側選單字，再在右側用字母卡片拼出正確英文。</p>
   </header>
 
@@ -27,13 +27,13 @@
       <h2>本次練習</h2>
       <p>主題：<span id="game-topics"></span></p>
       <p>單字數：<span id="game-word-count">0</span> 個</p>
-      <p class="sidebar-tip">可隨時回到上一頁換其他遊戲或回首頁換主題。</p>
+      <p class="sidebar-tip">可隨時回到上一頁換其他遊戲，或回首頁換主題。</p>
     </aside>
 
     <!-- 右側：第一階段內容 -->
     <section class="game-main">
       <section class="stage-panel active">
-        <p class="stage-note">點下面的單字卡可以聽英文，再到右側練習拼字。</p>
+        <p class="stage-note">點左側單字卡可以聽英文，右側立即看到字母卡，按「拼一拼」會再逐格重播一次字母卡。</p>
 
         <div class="stage1-layout">
           <!-- 單字總覽 -->
@@ -54,15 +54,12 @@
                   <div class="stage1-audio-buttons">
                     <button id="stage1-speak-en" class="btn btn-audio">英文 🔊</button>
                     <button id="stage1-speak-zh" class="btn btn-audio">中文 🔊</button>
+                    <button id="stage1-start-spell" class="btn btn-primary btn-sm">拼一拼</button>
                   </div>
                 </div>
               </div>
 
               <div class="stage1-spell-area">
-                <div class="stage1-spell-header">
-                  <span>拼一拼：</span>
-                  <button id="stage1-start-spell" class="btn btn-primary btn-sm">拼一拼</button>
-                </div>
                 <div id="stage1-spell-display" class="stage1-spell-display"></div>
                 <div id="stage1-letters" class="stage1-letters"></div>
                 <div id="stage1-spell-feedback" class="stage-feedback"></div>
