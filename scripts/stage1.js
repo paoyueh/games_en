@@ -6,11 +6,8 @@ let stage1CurrentSpelling = "";
 
 // 初始化 Stage1 頁面
 function initStage1Page() {
-  // 左側顯示主題資訊
   renderGameInfoCommon();
-  // 建立單字卡
   buildStage1WordList();
-  // 綁定按鈕
   setupStage1Buttons();
 }
 
@@ -52,7 +49,10 @@ function setupStage1Buttons() {
   }
   if (btnSpell) {
     btnSpell.addEventListener("click", () => {
-      if (stage1CurrentWord) startStage1Spelling();
+      if (stage1CurrentWord) {
+        // 重新用「逐格」動畫再顯示一次字母卡
+        buildStage1Letters(true);
+      }
     });
   }
 }
@@ -67,7 +67,6 @@ function selectStage1Word(word, index) {
   const zhEl = document.getElementById("stage1-zh");
   const feedbackEl = document.getElementById("stage1-spell-feedback");
   const displayEl = document.getElementById("stage1-spell-display");
-  const lettersEl = document.getElementById("stage1-letters");
 
   if (!cardEl) return;
   cardEl.classList.remove("hidden");
@@ -79,16 +78,22 @@ function selectStage1Word(word, index) {
 
   feedbackEl.textContent = "";
   displayEl.textContent = "";
-  lettersEl.innerHTML = "";
 
   stage1Answer = (word.en || "").toLowerCase().replace(/[^a-z]/g, "");
   stage1CurrentSpelling = "";
+
+  // 選完單字就直接顯示字母卡（不動畫）
+  buildStage1Letters(false);
 }
 
-function startStage1Spelling() {
-  if (!stage1CurrentWord || !stage1Answer) return;
-  stage1CurrentSpelling = "";
+/**
+ * 建立字母卡
+ * @param {boolean} animated  true = 逐格出現；false = 一次全部顯示
+ */
+function buildStage1Letters(animated) {
+  if (!stage1Answer) return;
 
+  stage1CurrentSpelling = "";
   const lettersEl = document.getElementById("stage1-letters");
   const displayEl = document.getElementById("stage1-spell-display");
   const feedbackEl = document.getElementById("stage1-spell-feedback");
@@ -100,7 +105,7 @@ function startStage1Spelling() {
   const letters = stage1Answer.split("");
   const shuffled = shuffleArray(letters);
 
-  shuffled.forEach((ch) => {
+  const createTile = (ch) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "letter-tile";
@@ -117,8 +122,26 @@ function startStage1Spelling() {
         checkStage1Spelling();
       }
     });
-    lettersEl.appendChild(btn);
-  });
+    return btn;
+  };
+
+  if (!animated) {
+    // 直接全部加上去
+    shuffled.forEach((ch) => {
+      lettersEl.appendChild(createTile(ch));
+    });
+  } else {
+    // 逐格動畫顯示
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index >= shuffled.length) {
+        clearInterval(interval);
+        return;
+      }
+      lettersEl.appendChild(createTile(shuffled[index]));
+      index++;
+    }, 180); // 每 0.18 秒一張
+  }
 }
 
 function checkStage1Spelling() {
@@ -134,7 +157,7 @@ function checkStage1Spelling() {
     feedbackEl.textContent = "再試一次喔～";
     feedbackEl.classList.remove("ok");
     feedbackEl.classList.add("error");
-    speak("Try again!", "en-US");
+    speak("Try again! 再試一次！", "en-US");
   }
 }
 
