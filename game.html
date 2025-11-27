@@ -1,187 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>英文小遊戲</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <meta charset="UTF-8">
+  <title>英文小遊戲 - 選擇遊戲</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-  <header class="game-header">
+<body class="home-body">
+  <header class="home-header">
     <h1>英文小遊戲 🎮</h1>
-    <p class="game-subtitle">
-      依剛剛選擇的主題，來玩 4 個小遊戲：認識單字、配對記憶、蓋 101 大樓、火車載貨拼單字！
-    </p>
+    <p class="home-subtitle">已選好主題，來選一款小遊戲開始練習吧！</p>
   </header>
 
-  <main class="game-main-wrapper">
-    <!-- 左側：主題與單字統計 -->
-    <aside class="game-sidebar">
+  <!-- 第二層：Game 首頁上方，有「選擇其他主題」 -->
+  <div class="top-back-row">
+    <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+      ⬅ 選擇其他主題
+    </button>
+  </div>
+
+  <main class="home-main">
+    <section class="home-intro-card">
       <h2>本次練習資訊</h2>
-      <p>主題：<span id="game-topics"></span></p>
-      <p>合計單字數：<span id="game-word-count">0</span> 個</p>
-      <p class="sidebar-tip">隨時可以回首頁重選主題。</p>
-      <a href="index.html" class="btn btn-secondary sidebar-back-btn">↩ 回到主題選擇</a>
-    </aside>
+      <p>主題：<strong id="game-topics"></strong></p>
+      <p>合計單字數：<strong id="game-word-count">0</strong> 個</p>
+      <p class="home-tip">隨時可以回到首頁重新選擇主題。</p>
+    </section>
 
-    <!-- 右側：四個階段 -->
-    <section class="game-main">
-      <!-- 階段切換按鈕 -->
-      <div class="stage-tabs">
-        <button class="stage-tab-button active" data-target="stage1">第 1 階段：認識單字 & 拼字</button>
-        <button class="stage-tab-button" data-target="stage2">第 2 階段：中英配對遊戲</button>
-        <button class="stage-tab-button" data-target="stage3">第 3 階段：101 大樓答題</button>
-        <button class="stage-tab-button" data-target="stage4">第 4 階段：火車載貨拼單字</button>
+    <section class="home-topic-section">
+      <h2>請選擇要玩的遊戲</h2>
+      <p class="home-topic-hint">點選遊戲卡片就可以開始，玩完後可以再回來換其他遊戲。</p>
+
+      <div class="game-menu-grid">
+        <a class="game-menu-card" href="stage1.html">
+          <div class="game-menu-icon">🧩</div>
+          <div class="game-menu-title">第 1 階段</div>
+          <div class="game-menu-desc">看圖認識單字 + 拼字練習</div>
+        </a>
+
+        <a class="game-menu-card" href="stage2.html">
+          <div class="game-menu-icon">🧠</div>
+          <div class="game-menu-title">第 2 階段</div>
+          <div class="game-menu-desc">中英配對記憶遊戲</div>
+        </a>
+
+        <a class="game-menu-card" href="stage3.html">
+          <div class="game-menu-icon">🏙️</div>
+          <div class="game-menu-title">第 3 階段</div>
+          <div class="game-menu-desc">101 大樓蓋房子答題</div>
+        </a>
+
+        <a class="game-menu-card" href="stage4.html">
+          <div class="game-menu-icon">🚂</div>
+          <div class="game-menu-title">第 4 階段</div>
+          <div class="game-menu-desc">火車載貨拼單字遊戲</div>
+        </a>
       </div>
-
-      <!-- 第 1 階段 -->
-      <section id="stage1" class="stage-panel active">
-        <div class="stage-header-line">
-          <h2>第 1 階段：看圖認識單字 + 拼字練習</h2>
-        </div>
-
-        <div class="stage1-layout">
-          <!-- 左側：單字總覽 -->
-          <div class="stage1-list">
-            <h3>單字總覽</h3>
-            <p class="stage-note">點選單字卡可以聽英文，再到右側練習拼字。</p>
-            <div id="stage1-wordList" class="word-card-grid"></div>
-          </div>
-
-          <!-- 右側：單字詳情 + 拼字 -->
-          <div class="stage1-detail">
-            <h3 id="stage1-currentTitle">請先從左側選一個單字開始</h3>
-            <div id="stage1-card" class="stage1-card hidden">
-              <div class="stage1-main-info">
-                <div id="stage1-img" class="stage1-img">❓</div>
-                <div class="stage1-texts">
-                  <div class="stage1-en" id="stage1-en"></div>
-                  <div class="stage1-zh" id="stage1-zh"></div>
-                  <div class="stage1-audio-buttons">
-                    <button id="stage1-speak-en" class="btn btn-audio">英文 🔊</button>
-                    <button id="stage1-speak-zh" class="btn btn-audio">中文 🔊</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="stage1-spell-area">
-                <div class="stage1-spell-header">
-                  <span>拼一拼：</span>
-                  <button id="stage1-start-spell" class="btn btn-primary btn-sm">拼一拼</button>
-                </div>
-                <div id="stage1-spell-display" class="stage1-spell-display"></div>
-                <div id="stage1-letters" class="stage1-letters"></div>
-                <div id="stage1-spell-feedback" class="stage-feedback"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 第 2 階段：配對遊戲 -->
-      <section id="stage2" class="stage-panel">
-        <div class="stage-header-line">
-          <h2>第 2 階段：中英配對記憶遊戲</h2>
-          <button id="stage2-restart" class="btn btn-orange">⟳ 重玩一次</button>
-        </div>
-        <p class="stage-note">
-          每一局會出現 6 組單字。點任一字卡會唸出中文字或英文，試著把正確的中英文配對在一起！
-        </p>
-        <div id="stage2-status" class="stage-status"></div>
-        <div id="stage2-grid" class="match-grid"></div>
-      </section>
-
-      <!-- 第 3 階段：蓋 101 大樓 -->
-      <section id="stage3" class="stage-panel">
-        <div class="stage-header-line">
-          <h2>第 3 階段：101 大樓答題遊戲</h2>
-        </div>
-        <div class="stage3-layout">
-          <div class="stage3-left">
-            <div class="stage3-question-box">
-              <div id="stage3-questionType" class="stage3-question-type">題目類型</div>
-              <div id="stage3-questionPrompt" class="stage3-question-prompt"></div>
-              <button id="stage3-repeatAudio" class="btn btn-audio right-audio-btn">
-                再聽一次 🔊
-              </button>
-            </div>
-            <div id="stage3-options" class="stage3-options"></div>
-            <div class="stage3-bottom-buttons">
-              <button id="stage3-nextBtn" class="btn btn-primary big-btn">下一題</button>
-              <button id="stage3-resetBtn" class="btn btn-secondary big-btn">⟳ 重新開始</button>
-            </div>
-          </div>
-          <div class="stage3-right">
-            <div class="building-panel">
-              <div class="building-header">
-                <div>目前樓層：<span id="stage3-floor">0</span> / 101 層</div>
-              </div>
-              <div class="building-visual-wrapper">
-                <div id="building-tower" class="building-tower"></div>
-                <div id="building-change" class="building-change"></div>
-                <div id="building-great" class="building-great"></div>
-              </div>
-            </div>
-            <div id="stage3-feedback" class="stage-feedback"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 第 4 階段：火車載貨拼單字 -->
-      <section id="stage4" class="stage-panel">
-        <div class="stage-header-line">
-          <h2>第 4 階段：火車載貨拼單字</h2>
-        </div>
-        <div class="stage4-layout">
-          <div class="stage4-top" id="stage4-questionArea">
-            <div id="stage4-img" class="stage4-img">🚂</div>
-            <div class="stage4-texts">
-              <div id="stage4-zh" class="stage4-zh"></div>
-              <div id="stage4-en-hint" class="stage4-en-hint">請用下面字母，把英文單字拼在火車車廂上！</div>
-            </div>
-          </div>
-
-          <div class="stage4-middle">
-            <div class="train-area">
-              <div class="train-track"></div>
-              <div id="train" class="train">
-                <div class="train-head">🚂</div>
-                <div id="stage4-letterSlots" class="train-cars"></div>
-              </div>
-            </div>
-            <div class="letter-pool-wrapper">
-              <div class="letter-pool-label">字母字卡：</div>
-              <div id="stage4-letterPool" class="letter-pool"></div>
-            </div>
-          </div>
-
-          <div class="stage4-bottom">
-            <div class="stage4-controls">
-              <button id="stage4-goBtn" class="btn btn-primary big-btn">出發 🚂</button>
-              <button id="stage4-resetBtn" class="btn btn-secondary big-btn">⟳ 再玩一次</button>
-            </div>
-            <div id="stage4-progress" class="stage4-progress">
-              已成功載貨火車：<span id="stage4-goodTrains">0</span> / 10 台
-            </div>
-          </div>
-        </div>
-      </section>
     </section>
   </main>
 
-  <!-- 共用煙火效果 -->
-  <div id="fireworks-overlay" class="fireworks-overlay hidden">
-    <div class="fireworks-content">
-      <div class="fireworks-text" id="fireworks-text">恭喜完成！</div>
-      <div class="fireworks-area">
-        <div class="firework f1"></div>
-        <div class="firework f2"></div>
-        <div class="firework f3"></div>
-        <div class="firework f4"></div>
-        <div class="firework f5"></div>
-      </div>
-    </div>
-  </div>
+  <footer class="home-footer">
+    <small>WordBank 由 Google Sheet 管理 · GitHub Pages 執行</small>
+  </footer>
 
-  <script src="scripts/game.js"></script>
+  <script src="scripts/common.js"></script>
+  <script src="scripts/game-home.js"></script>
 </body>
 </html>
