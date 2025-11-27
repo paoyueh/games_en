@@ -24,9 +24,6 @@ function resetStage4Game() {
   stage4GameOver = false;
   document.getElementById("stage4-done").textContent = "0";
   document.getElementById("stage4-progress").textContent = "";
-  const startBtn = document.getElementById("stage4-start");
-  startBtn.disabled = false;
-  startBtn.textContent = "🚂 出發";
   prepareStage4Train();
 }
 
@@ -39,7 +36,9 @@ function prepareStage4Train() {
   const progress = document.getElementById("stage4-progress");
 
   train.classList.remove("train-move", "train-flash");
-  train.style.opacity = 1;
+  train.style.visibility = "visible";
+  train.style.transform = "translateX(0)";
+
   cars.innerHTML = "";
   pool.innerHTML = "";
   progress.textContent = "";
@@ -53,7 +52,7 @@ function prepareStage4Train() {
   document.getElementById("stage4-zh").textContent = zh;
   document.getElementById("stage4-img").innerHTML = visual;
 
-  // 題目時順便念一次英文
+  // 題目時念一次英文
   speak(stage4CurrentWord.en, "en-US");
 
   stage4Answer = (stage4CurrentWord.en || "")
@@ -70,7 +69,7 @@ function prepareStage4Train() {
     cars.appendChild(slot);
   });
 
-  // 建立字母池（打亂順序）
+  // 建立字母池
   const shuffled = shuffleArray(letters);
   shuffled.forEach((ch, idx) => {
     const btn = document.createElement("button");
@@ -78,19 +77,9 @@ function prepareStage4Train() {
     btn.className = "letter-tile big-letter";
     btn.textContent = ch.toUpperCase();
     btn.dataset.char = ch;
-    btn.dataset.index = String(idx); // 唯一識別
+    btn.dataset.index = String(idx);
     btn.addEventListener("click", () => onStage4LetterClick(btn));
     pool.appendChild(btn);
-  });
-
-  // 出題動畫：火車從右邊滑入
-  train.style.transition = "none";
-  train.style.transform = "translateX(120%)";
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      train.style.transition = "transform 0.8s ease";
-      train.style.transform = "translateX(0)";
-    });
   });
 }
 
@@ -105,7 +94,7 @@ function onStage4LetterClick(btn) {
   const ch = btn.dataset.char;
   empty.textContent = ch.toUpperCase();
   empty.dataset.char = ch;
-  empty.dataset.btnIndex = btn.dataset.index; // 紀錄來源按鈕
+  empty.dataset.btnIndex = btn.dataset.index;
 
   btn.disabled = true;
   btn.classList.add("used");
@@ -138,7 +127,6 @@ function onStage4Start() {
   const cars = document.querySelectorAll("#stage4-train-cars .letter-slot");
   const progress = document.getElementById("stage4-progress");
 
-  // 把目前車廂中的字母讀成字串（可能不完整）
   const spelling = Array.from(cars)
     .map((s) => s.dataset.char || "")
     .join("");
@@ -150,10 +138,11 @@ function onStage4Start() {
     speak(stage4CurrentWord.en, "en-US");
 
     train.classList.remove("train-flash");
-    train.classList.add("train-move"); // 從目前位置一路往左開到畫面外
+    train.classList.add("train-move");
 
     stage4DoneCount++;
-    document.getElementById("stage4-done").textContent = stage4DoneCount.toString();
+    document.getElementById("stage4-done").textContent =
+      stage4DoneCount.toString();
 
     setTimeout(() => {
       if (stage4DoneCount >= 10) {
@@ -161,25 +150,20 @@ function onStage4Start() {
       } else {
         prepareStage4Train();
       }
-    }, 1700); // 等火車跑完再換下一題
+    }, 1700);
   } else {
-    progress.textContent = "這次拼錯了，火車閃一下後換下一題。";
+    progress.textContent = "這次拼錯了，火車閃一下，換下一題試試看。";
 
     train.classList.remove("train-move");
     train.classList.add("train-flash");
-    train.style.opacity = 1;
 
     speak("Oops! Try again! 再試一次！", "en-US");
 
-    // 閃一下之後讓火車淡出
     setTimeout(() => {
-      train.style.opacity = 0;
-    }, 600);
+      train.style.visibility = "hidden";
+    }, 700);
 
-    // 兩秒後直接換下一題
     setTimeout(() => {
-      train.style.opacity = 1;
-      train.classList.remove("train-flash");
       prepareStage4Train();
     }, 2000);
   }
@@ -197,9 +181,6 @@ function finishStage4Game() {
 
   const cars = document.getElementById("stage4-train-cars");
   cars.innerHTML = "";
-
-  const train = document.getElementById("stage4-train");
-  train.style.opacity = 0;
 
   const startBtn = document.getElementById("stage4-start");
   startBtn.disabled = true;
