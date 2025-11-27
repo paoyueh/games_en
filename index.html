@@ -3,10 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>英文小遊戲</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
-  <h1>英文小遊戲 🎮</h1>
-  <p>歡迎！請點下面開始進入遊戲：</p>
-  <p><a href="game.html">➡️ 進入遊戲主頁（game.html）</a></p>
+<body class="home-body">
+  <header class="home-header">
+    <h1>英文小遊戲 🎮</h1>
+    <p class="home-subtitle">選擇你想練習的主題，一起玩四個好玩的英文小遊戲！</p>
+  </header>
+
+  <main class="home-main">
+    <!-- 遊戲簡介 -->
+    <section class="home-intro-card">
+      <h2>遊戲說明</h2>
+      <ul>
+        <li>第 1 階段：看圖認識單字 + 拼字練習</li>
+        <li>第 2 階段：中英配對記憶遊戲</li>
+        <li>第 3 階段：101 大樓蓋房子答題挑戰</li>
+        <li>第 4 階段：火車載貨拼單字小遊戲</li>
+      </ul>
+      <p class="home-tip">先選擇 1 個或多個主題，再按「進入遊戲」開始練習 🌟</p>
+    </section>
+
+    <!-- 主題選擇區 -->
+    <section class="home-topic-section">
+      <h2>請選擇主題</h2>
+      <p class="home-topic-hint">點擊方框即可選取；再點一次可取消選取。</p>
+
+      <div id="topic-grid" class="topic-grid">
+        <!-- 由 home.js 動態產生主題卡片 -->
+      </div>
+
+      <div class="topic-buttons">
+        <button id="startGameBtn" class="btn btn-primary" disabled>✅ 進入遊戲</button>
+        <button id="resetSelectionBtn" class="btn btn-secondary">↺ 重選主題</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <small>WordBank 由 Google Sheet 管理 · GitHub Pages 執行</small>
+  </footer>
+
+  <script src="scripts/home.js"></script>
 </body>
 </html>
