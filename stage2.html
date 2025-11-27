@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>第 2 階段 - 中英配對記憶遊戲</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="game-header">
+    <h1>第 2 階段：中英配對記憶遊戲</h1>
+    <p class="game-subtitle">點字卡進行中英配對，聽聽看英文與中文的發音，加深記憶。</p>
+  </header>
+
+  <div class="top-back-row">
+    <button class="btn btn-secondary" onclick="window.location.href='game.html'">
+      ⬅ 選擇其他遊戲
+    </button>
+    <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+      🏠 選擇其他主題
+    </button>
+  </div>
+
+  <main class="game-main-wrapper">
+    <aside class="game-sidebar">
+      <h2>本次練習</h2>
+      <p>主題：<span id="game-topics"></span></p>
+      <p>單字數：<span id="game-word-count">0</span> 個</p>
+      <p class="sidebar-tip">每一局會隨機出 6 組中英配對，完成後可以「重玩一次」。</p>
+    </aside>
+
+    <section class="game-main">
+      <section class="stage-panel active">
+        <div class="stage-header-line">
+          <h2>配對小遊戲</h2>
+          <button id="stage2-restart" class="btn btn-orange big-btn">
+            🔁 重玩一次
+          </button>
+        </div>
+        <p class="stage-note">
+          點任一字卡會唸出卡片上的中文或英文。一次選兩張，若為同一個單字就成功配對！
+        </p>
+        <p id="stage2-status" class="stage-status"></p>
+
+        <div id="stage2-grid" class="match-grid"></div>
+
+        <p id="stage2-feedback" class="stage-feedback"></p>
+      </section>
+    </section>
+  </main>
+
+  <!-- 煙火效果 -->
+  <div id="fireworks-overlay" class="fireworks-overlay hidden">
+    <div class="fireworks-content">
+      <div id="fireworks-text" class="fireworks-text">恭喜完成！</div>
+      <div class="fireworks-area">
+        <div class="firework f1"></div>
+        <div class="firework f2"></div>
+        <div class="firework f3"></div>
+        <div class="firework f4"></div>
+        <div class="firework f5"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/common.js"></script>
+  <script src="scripts/stage2.js"></script>
+</body>
+</html>
