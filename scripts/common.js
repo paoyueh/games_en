@@ -9,7 +9,12 @@ let allVoices = [];
 let voicesLoaded = false;
 
 function loadVoices() {
-  allVoices = window.speechSynthesis ? window.speechSynthesis.getVoices() || [] : [];
+  if (!("speechSynthesis" in window)) {
+    voicesLoaded = false;
+    allVoices = [];
+    return;
+  }
+  allVoices = window.speechSynthesis.getVoices() || [];
   voicesLoaded = true;
 }
 
@@ -21,19 +26,48 @@ if ("speechSynthesis" in window) {
 }
 
 /**
- * 依語系挑選一個 voice，優先女性
+ * 依語系挑選一個 voice，優先常見清晰女聲
+ * @param {string} langPrefix 例："en"、"zh-TW"
+ * @param {string[]} preferNames 例：["Google US English", "Microsoft Aria"]
  */
-function pickVoice(langPrefix) {
+function pickVoice(langPrefix, preferNames = []) {
   if (!voicesLoaded || !allVoices.length) return null;
-  const candidates = allVoices.filter(v => v.lang && v.lang.toLowerCase().startsWith(langPrefix.toLowerCase()));
+
+  const lp = langPrefix.toLowerCase();
+  const candidates = allVoices.filter(
+    (v) => v.lang && v.lang.toLowerCase().startsWith(lp)
+  );
   if (!candidates.length) return null;
 
-  // 優先挑名字看起來像女聲的
-  const femaleKeywords = ["female", "woman", "女", "Samantha", "Karen", "Susan", "Zira", "Joana", "Shelley"];
-  const female = candidates.find(v =>
-    femaleKeywords.some(k => v.name.toLowerCase().includes(k.toLowerCase()))
+  // 1. 先依優先名稱清單找
+  for (const namePart of preferNames) {
+    const v = candidates.find((c) =>
+      c.name.toLowerCase().includes(namePart.toLowerCase())
+    );
+    if (v) return v;
+  }
+
+  // 2. 再用「看起來像女聲」的關鍵字找
+  const femaleKeywords = [
+    "female",
+    "woman",
+    "女",
+    "Samantha",
+    "Karen",
+    "Jenny",
+    "Aria",
+    "Hazel",
+    "Zira"
+  ];
+  const female = candidates.find((v) =>
+    femaleKeywords.some((k) =>
+      v.name.toLowerCase().includes(k.toLowerCase())
+    )
   );
-  return female || candidates[0];
+  if (female) return female;
+
+  // 3. 找不到就用第一個候選
+  return candidates[0];
 }
 
 /**
@@ -47,15 +81,24 @@ function speak(text, lang = "en-US") {
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = lang;
 
-  // 嘗試挑一個適合的 voice
   let voice = null;
-  if (lang.toLowerCase().startsWith("en")) {
-    voice = pickVoice("en"); // 英文女聲
-  } else if (lang.toLowerCase().startsWith("zh")) {
-    // 台灣中文優先 zh-TW，其次 zh
-    voice = pickVoice("zh-TW") || pickVoice("zh");
+  const lower = lang.toLowerCase();
+
+  if (lower.startsWith("en")) {
+    // 常見好聽英文女聲優先
+    voice =
+      pickVoice("en-us", ["Google US English", "Microsoft Aria", "Microsoft Jenny"]) ||
+      pickVoice("en", ["Samantha", "Karen"]);
+  } else if (lower.startsWith("zh")) {
+    // 台灣中文優先 zh-TW，再退而求其次 zh
+    voice =
+      pickVoice("zh-tw", ["Google 國語 (臺灣)", "Google 國語", "Hanhan", "Yunxi"]) ||
+      pickVoice("zh", ["Google 國語", "Hanhan", "Yunxi"]);
   }
-  if (voice) utter.voice = voice;
+
+  if (voice) {
+    utter.voice = voice;
+  }
 
   window.speechSynthesis.speak(utter);
 }
