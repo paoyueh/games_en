@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>第 4 階段 - 火車載貨拼單字遊戲</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="game-header">
+    <h1>第 4 階段：火車載貨拼單字遊戲</h1>
+    <p class="game-subtitle">
+      先看圖片與中文，再用字母卡把英文拼在火車車廂上，按「出發」看看火車有沒有成功出發。
+    </p>
+  </header>
+
+  <div class="top-back-row">
+    <button class="btn btn-secondary" onclick="window.location.href='game.html'">
+      ⬅ 選擇其他遊戲
+    </button>
+    <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+      🏠 選擇其他主題
+    </button>
+  </div>
+
+  <main class="game-main-wrapper">
+    <aside class="game-sidebar">
+      <h2>本次練習</h2>
+      <p>主題：<span id="game-topics"></span></p>
+      <p>單字數：<span id="game-word-count">0</span> 個</p>
+      <p>已裝滿的火車：<span id="stage4-done">0</span> / 10</p>
+      <p class="sidebar-tip">答對會加滿油，火車從右往左開走；答錯會漏油晃動，兩秒後進入下一題。</p>
+    </aside>
+
+    <section class="game-main">
+      <section class="stage-panel active">
+        <div class="stage4-layout">
+          <!-- 上：題目 -->
+          <div class="stage4-top">
+            <div id="stage4-img" class="stage4-img">❓</div>
+            <div>
+              <div id="stage4-zh" class="stage4-zh"></div>
+              <div class="stage4-en-hint">
+                題目會用英文念出單字，一起跟著唸唸看吧！
+              </div>
+            </div>
+          </div>
+
+          <!-- 中：火車 -->
+          <div class="stage4-middle">
+            <div class="train-area">
+              <div class="train-track"></div>
+              <div id="stage4-train" class="train">
+                <div class="train-head">🚂</div>
+                <div id="stage4-train-cars" class="train-cars"></div>
+              </div>
+            </div>
+
+            <!-- 下：字母池 -->
+            <div class="letter-pool-wrapper">
+              <div class="letter-pool-label">請點下方字母卡，依序放到火車車廂上：</div>
+              <div id="stage4-letter-pool" class="letter-pool"></div>
+            </div>
+
+            <div class="stage4-controls">
+              <button id="stage4-start" class="btn btn-primary big-btn">
+                🚂 出發
+              </button>
+              <button id="stage4-reset" class="btn btn-secondary big-btn">
+                🔁 重新開始
+              </button>
+            </div>
+            <div id="stage4-progress" class="stage4-progress"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- 煙火效果 -->
+  <div id="fireworks-overlay" class="fireworks-overlay hidden">
+    <div class="fireworks-content">
+      <div id="fireworks-text" class="fireworks-text">恭喜完成！</div>
+      <div class="fireworks-area">
+        <div class="firework f1"></div>
+        <div class="firework f2"></div>
+        <div class="firework f3"></div>
+        <div class="firework f4"></div>
+        <div class="firework f5"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/common.js"></script>
+  <script src="scripts/stage4.js"></script>
+</body>
+</html>
