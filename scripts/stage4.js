@@ -2,7 +2,6 @@
 
 let stage4CurrentWord = null;
 let stage4Answer = "";
-let stage4Spelling = "";
 let stage4DoneCount = 0;
 let stage4GameOver = false;
 
@@ -36,11 +35,9 @@ function prepareStage4Train() {
   const pool = document.getElementById("stage4-letter-pool");
   const progress = document.getElementById("stage4-progress");
 
-  // 清除狀態
-  train.classList.remove("train-move", "train-leak");
+  train.classList.remove("train-move", "train-smoke");
   cars.innerHTML = "";
   pool.innerHTML = "";
-  stage4Spelling = "";
   progress.textContent = "";
 
   // 隨機挑一個單字
@@ -59,11 +56,13 @@ function prepareStage4Train() {
     .toLowerCase()
     .replace(/[^a-z]/g, "");
 
-  // 建立車廂（每個字母一個 slot）
   const letters = stage4Answer.split("");
+
+  // 建立車廂 slot
   letters.forEach(() => {
     const slot = document.createElement("div");
     slot.className = "letter-slot";
+    slot.addEventListener("click", () => onStage4SlotClick(slot));
     cars.appendChild(slot);
   });
 
@@ -75,9 +74,19 @@ function prepareStage4Train() {
     btn.className = "letter-tile big-letter";
     btn.textContent = ch.toUpperCase();
     btn.dataset.char = ch;
-    btn.dataset.index = String(idx);
+    btn.dataset.index = String(idx); // 唯一識別
     btn.addEventListener("click", () => onStage4LetterClick(btn));
     pool.appendChild(btn);
+  });
+
+  // 出題動畫：火車從右邊滑入
+  train.style.transition = "none";
+  train.style.transform = "translateX(120%)";
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      train.style.transition = "transform 0.8s ease";
+      train.style.transform = "translateX(0)";
+    });
   });
 }
 
@@ -92,37 +101,51 @@ function onStage4LetterClick(btn) {
   const ch = btn.dataset.char;
   empty.textContent = ch.toUpperCase();
   empty.dataset.char = ch;
+  empty.dataset.btnIndex = btn.dataset.index; // 紀錄來源按鈕
 
-  stage4Spelling += ch;
   btn.disabled = true;
   btn.classList.add("used");
+}
+
+function onStage4SlotClick(slot) {
+  if (stage4GameOver) return;
+  if (!slot.dataset.char) return;
+
+  const btnIndex = slot.dataset.btnIndex;
+  if (btnIndex != null) {
+    const poolBtn = document.querySelector(
+      `#stage4-letter-pool .letter-tile[data-index="${btnIndex}"]`
+    );
+    if (poolBtn) {
+      poolBtn.disabled = false;
+      poolBtn.classList.remove("used");
+    }
+  }
+
+  slot.textContent = "";
+  delete slot.dataset.char;
+  delete slot.dataset.btnIndex;
 }
 
 function onStage4Start() {
   if (stage4GameOver) return;
 
   const train = document.getElementById("stage4-train");
+  const cars = document.querySelectorAll("#stage4-train-cars .letter-slot");
   const progress = document.getElementById("stage4-progress");
 
-  if (!stage4Answer || stage4Answer.length === 0) return;
-
-  // 檢查是否填滿
-  const cars = document.querySelectorAll("#stage4-train-cars .letter-slot");
-  const filled = Array.from(cars).every((s) => s.dataset.char);
-  if (!filled) {
-    progress.textContent = "請先把所有字母放上車廂，再按出發喔！";
-    return;
-  }
-
+  // 把目前車廂中的字母讀成字串（可能不完整）
   const spelling = Array.from(cars)
-    .map((s) => s.dataset.char)
+    .map((s) => s.dataset.char || "")
     .join("");
 
-  const correct = spelling === stage4Answer;
+  const correct = spelling === stage4Answer && spelling.length > 0;
 
   if (correct) {
     progress.textContent = "太棒了！拼字正確，火車出發囉～";
     speak(stage4CurrentWord.en, "en-US");
+
+    train.classList.remove("train-smoke");
     train.classList.add("train-move");
 
     stage4DoneCount++;
@@ -136,10 +159,12 @@ function onStage4Start() {
       }
     }, 1700);
   } else {
-    progress.textContent = "這次拼錯了，火車漏油啦～下一台再試試看。";
-    train.classList.add("train-leak");
+    progress.textContent = "這次拼錯了，火車冒煙晃動，換下一題試試看。";
+    train.classList.remove("train-move");
+    train.classList.add("train-smoke");
     speak("Oops! Try again! 再試一次！", "en-US");
 
+    // 無論有沒有拼字，都當作答錯，兩秒後下一題
     setTimeout(() => {
       prepareStage4Train();
     }, 2000);
@@ -153,7 +178,6 @@ function finishStage4Game() {
 
   showFireworks("🎆 火車全部裝滿啦！恭喜完成！", 3200);
 
-  // 題目區暫停，僅保留「再玩一次」
   const pool = document.getElementById("stage4-letter-pool");
   pool.innerHTML = "";
 
