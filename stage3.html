@@ -50,7 +50,8 @@
             <div id="stage3-options" class="stage3-options"></div>
 
             <div class="stage3-bottom-buttons">
-              <button id="stage3-next" class="btn btn-primary big-btn" disabled>
+              <!-- 改為隱藏的下一題按鈕，只做狀態顯示，不讓學生操作 -->
+              <button id="stage3-next" class="btn btn-primary big-btn" style="display:none;">
                 下一題 ➡
               </button>
               <button id="stage3-restart" class="btn btn-secondary big-btn">
@@ -81,11 +82,21 @@
     </section>
   </main>
 
-  <!-- 煙火效果 -->
+  <!-- 煙火效果：把 firework 變多（重複 f1~f5），看起來更熱鬧 -->
   <div id="fireworks-overlay" class="fireworks-overlay hidden">
     <div class="fireworks-content">
       <div id="fireworks-text" class="fireworks-text">恭喜完成！</div>
       <div class="fireworks-area">
+        <div class="firework f1"></div>
+        <div class="firework f2"></div>
+        <div class="firework f3"></div>
+        <div class="firework f4"></div>
+        <div class="firework f5"></div>
+        <div class="firework f1"></div>
+        <div class="firework f2"></div>
+        <div class="firework f3"></div>
+        <div class="firework f4"></div>
+        <div class="firework f5"></div>
         <div class="firework f1"></div>
         <div class="firework f2"></div>
         <div class="firework f3"></div>
