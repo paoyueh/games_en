@@ -29,15 +29,26 @@ if ("speechSynthesis" in window) {
  * 依語系挑選一個 voice，優先常見清晰女聲
  * @param {string} langPrefix 例："en"、"zh-TW"
  * @param {string[]} preferNames 例：["Google US English", "Microsoft Aria"]
+ * @param {boolean} avoidCompact 是否避免帶 compact / siri 的聲音
  */
-function pickVoice(langPrefix, preferNames = []) {
+function pickVoice(langPrefix, preferNames = [], avoidCompact = false) {
   if (!voicesLoaded || !allVoices.length) return null;
 
   const lp = langPrefix.toLowerCase();
-  const candidates = allVoices.filter(
+  let candidates = allVoices.filter(
     (v) => v.lang && v.lang.toLowerCase().startsWith(lp)
   );
   if (!candidates.length) return null;
+
+  // 先把 compact / siri 類型踢掉（很多是壓縮版、比較沙啞）
+  if (avoidCompact) {
+    const filtered = candidates.filter(
+      (v) =>
+        !/compact/i.test(v.name) &&
+        !/siri/i.test(v.name)
+    );
+    if (filtered.length) candidates = filtered;
+  }
 
   // 1. 先依優先名稱清單找
   for (const namePart of preferNames) {
@@ -57,7 +68,11 @@ function pickVoice(langPrefix, preferNames = []) {
     "Jenny",
     "Aria",
     "Hazel",
-    "Zira"
+    "Zira",
+    "Mei-Jia",
+    "MeiJia",
+    "Ting-Ting",
+    "TingTing"
   ];
   const female = candidates.find((v) =>
     femaleKeywords.some((k) =>
@@ -90,10 +105,14 @@ function speak(text, lang = "en-US") {
       pickVoice("en-us", ["Google US English", "Microsoft Aria", "Microsoft Jenny"]) ||
       pickVoice("en", ["Samantha", "Karen"]);
   } else if (lower.startsWith("zh")) {
-    // 台灣中文優先 zh-TW，再退而求其次 zh
+    // 盡量挑台灣國語，避免 compact / siri 壓縮聲
     voice =
-      pickVoice("zh-tw", ["Google 國語 (臺灣)", "Google 國語", "Hanhan", "Yunxi"]) ||
-      pickVoice("zh", ["Google 國語", "Hanhan", "Yunxi"]);
+      pickVoice(
+        "zh-tw",
+        ["Mei-Jia", "MeiJia", "國語", "Guoyu"],
+        true
+      ) ||
+      pickVoice("zh", ["國語", "Guoyu"], true);
   }
 
   if (voice) {
