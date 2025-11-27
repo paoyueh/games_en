@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>第 1 階段 - 認識單字 & 拼字</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="game-header">
+    <h1>第 1 階段：看圖認識單字 + 拼字練習</h1>
+    <p class="game-subtitle">先從左側選單字，再在右側用字母卡片拼出正確英文。</p>
+  </header>
+
+  <!-- 第三層：兩個按鈕 -->
+  <div class="top-back-row">
+    <button class="btn btn-secondary" onclick="window.location.href='game.html'">
+      ⬅ 選擇其他遊戲
+    </button>
+    <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+      🏠 選擇其他主題
+    </button>
+  </div>
+
+  <main class="game-main-wrapper">
+    <!-- 左側：本次主題資訊 -->
+    <aside class="game-sidebar">
+      <h2>本次練習</h2>
+      <p>主題：<span id="game-topics"></span></p>
+      <p>單字數：<span id="game-word-count">0</span> 個</p>
+      <p class="sidebar-tip">可隨時回到上一頁換其他遊戲或回首頁換主題。</p>
+    </aside>
+
+    <!-- 右側：第一階段內容 -->
+    <section class="game-main">
+      <section class="stage-panel active">
+        <p class="stage-note">點下面的單字卡可以聽英文，再到右側練習拼字。</p>
+
+        <div class="stage1-layout">
+          <!-- 單字總覽 -->
+          <div class="stage1-list">
+            <h3>單字總覽</h3>
+            <div id="stage1-wordList" class="word-card-grid"></div>
+          </div>
+
+          <!-- 詳細區 + 拼字 -->
+          <div class="stage1-detail">
+            <h3 id="stage1-currentTitle">請先從左側選一個單字開始</h3>
+            <div id="stage1-card" class="stage1-card hidden">
+              <div class="stage1-main-info">
+                <div id="stage1-img" class="stage1-img">❓</div>
+                <div class="stage1-texts">
+                  <div class="stage1-en" id="stage1-en"></div>
+                  <div class="stage1-zh" id="stage1-zh"></div>
+                  <div class="stage1-audio-buttons">
+                    <button id="stage1-speak-en" class="btn btn-audio">英文 🔊</button>
+                    <button id="stage1-speak-zh" class="btn btn-audio">中文 🔊</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stage1-spell-area">
+                <div class="stage1-spell-header">
+                  <span>拼一拼：</span>
+                  <button id="stage1-start-spell" class="btn btn-primary btn-sm">拼一拼</button>
+                </div>
+                <div id="stage1-spell-display" class="stage1-spell-display"></div>
+                <div id="stage1-letters" class="stage1-letters"></div>
+                <div id="stage1-spell-feedback" class="stage-feedback"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="scripts/common.js"></script>
+  <script src="scripts/stage1.js"></script>
+</body>
+</html>
