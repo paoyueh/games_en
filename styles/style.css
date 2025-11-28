@@ -301,42 +301,18 @@ main {
   margin: 6px auto 0;
   padding: 0 16px;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
-/* -------- 第二層 Game 首頁：本次練習資訊 + 四款遊戲選單 -------- */
+/* -------- 第二層 Game 首頁：四款遊戲選單 -------- */
 
-/* 第二層 main 容器（game.html） */
-.game-home-main {
-  max-width: 960px;
-  margin: 0 auto 40px;
-  padding: 0 16px 32px;
-}
-
-/* 「本次練習資訊」卡片：整個內容區塊等寬 */
-.game-home-info-card {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 24px;
-}
-
-/* 選遊戲的 section */
-.game-home-games-section {
-  margin-top: 12px;
-}
-
-/* 四個遊戲卡片容器：預設至少 2 欄，避免一行只有 1 個 */
 .game-menu-grid {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
   margin-top: 10px;
-  grid-template-columns: repeat(2, minmax(140px, 1fr));
-}
-
-/* 寬一點時，改成 1 行 4 個 */
-@media (min-width: 900px) {
-  .game-menu-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
 .game-menu-card {
@@ -837,7 +813,8 @@ main {
 }
 
 /* 題目右側的「已裝滿火車」顯示 */
-.stage4-done-display {
+.stage4-done-display,
+#stage4-done-wrapper {
   font-size: 18px;
   font-weight: 700;
   color: #e67e22;
@@ -921,7 +898,7 @@ main {
 }
 
 /* 火車動畫 */
-/* 正常出發：從目前位置一路開到左邊外面（實際距離由 JS 控制） */
+/* 正常出發：從目前位置一路開到左邊外面 */
 .train-move {
   transform: translateX(-120%);
 }
@@ -1044,58 +1021,33 @@ main {
 
 /* -------- RWD 大致調整 -------- */
 
-/* iPad / 小螢幕 notebook 調整 */
+/* 平板以下（含手機） */
 @media (max-width: 900px) {
+  body {
+    font-size: 16px;
+  }
+
   .home-main {
     max-width: 100%;
+    padding: 16px 14px 28px;
   }
 
-  .game-main-wrapper {
-    flex-direction: column;
-  }
-
-  .game-sidebar {
-    width: 100%;
-  }
-
-  .stage1-layout,
-  .stage3-layout {
-    flex-direction: column;
-  }
-
-  .stage3-right {
-    width: 100%;
-  }
-}
-
-/* 手機調整：字體放大、留白收窄、卡片變大一點 */
-@media (max-width: 768px) {
   .home-header h1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .home-subtitle {
-    font-size: 14px;
-  }
-
-  .home-main {
-    padding: 12px 12px 24px;
-  }
-
-  .home-intro-card {
-    padding: 14px 16px;
-  }
-
-  .topic-card {
-    padding: 12px 12px;
-  }
-
-  .topic-title {
     font-size: 15px;
   }
 
+  .topic-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
   .game-header {
-    padding-top: 16px;
+    padding-top: 18px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
   .game-header h1 {
@@ -1103,32 +1055,75 @@ main {
   }
 
   .game-subtitle {
+    padding: 0 14px;
     font-size: 13px;
   }
 
-  .game-home-main {
-    padding: 0 12px 28px;
+  .top-back-row {
+    padding: 0 14px;
+    justify-content: space-between;
+  }
+
+  .game-main-wrapper {
+    flex-direction: column;
+    padding: 0 14px 24px;
+    gap: 12px;
   }
 
   .game-sidebar {
-    font-size: 13px;
+    width: 100%;
+    font-size: 14px;
   }
 
-  .stage1-en {
-    font-size: 22px;
+  /* 第二層遊戲選單：手機與平板固定 2 欄 */
+  .game-menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .stage1-zh {
-    font-size: 15px;
+  .stage-panel {
+    padding: 14px 12px 18px;
+  }
+
+  .stage-header-line h2 {
+    font-size: 17px;
+  }
+
+  /* 第 1 階段：單字卡改 2 欄 */
+  .stage1-layout {
+    flex-direction: column;
+  }
+
+  .stage1-list,
+  .stage1-detail {
+    max-width: 100%;
+    flex: 1 1 auto;
   }
 
   .word-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .stage1-en {
+    font-size: 22px;
+  }
+
+  /* 第 2 階段：配對卡在窄螢幕比較寬鬆 */
   .match-card {
     flex: 0 0 calc(50% - 6px);
-    font-size: 15px;
+    font-size: 14px;
+  }
+
+  /* 第 3 階段：上下排列，大樓在下方 */
+  .stage3-layout {
+    flex-direction: column;
+  }
+
+  .stage3-right {
+    width: 100%;
+  }
+
+  .stage3-question-box {
+    min-height: 88px;
   }
 
   .stage3-question-text,
@@ -1136,44 +1131,61 @@ main {
     font-size: 16px;
   }
 
-  .stage3-option-card {
-    font-size: 16px;
-    padding: 12px 8px;
+  .building-visual-wrapper {
+    height: 240px;
+  }
+
+  /* 第 4 階段：題目區改成直向排版，喇叭與進度更好點 */
+  .stage4-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #stage4-done-wrapper {
+    align-self: flex-end;
+    font-size: 17px;
   }
 
   .stage4-zh {
     font-size: 18px;
   }
 
-  .stage4-en-hint {
+  .letter-pool-label {
     font-size: 13px;
   }
-}
 
-/* 非常窄的小手機，主題 & 遊戲卡片維持兩欄 */
-@media (max-width: 420px) {
-  .topic-grid {
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
-  }
-
-  .game-menu-grid {
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  .stage4-controls {
+    flex-wrap: wrap;
   }
 }
 
-/* 🔊 第四階段題目喇叭播放按鈕 */
-.stage4-audio-btn {
-  margin-left: 10px;
-  padding: 6px 12px;
-  font-size: 20px;
-  background: #ffffff;
-  border: 1px solid #d0d8ff;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.10);
-  transition: background 0.15s ease;
-}
+/* 更窄的手機（例如 375 以下）做一點微調 */
+@media (max-width: 480px) {
+  .home-header h1 {
+    font-size: 26px;
+  }
 
-.stage4-audio-btn:hover {
-  background: #eef3ff;
+  .home-intro-card {
+    padding: 14px 14px;
+  }
+
+  .game-header h1 {
+    font-size: 22px;
+  }
+
+  .game-subtitle {
+    font-size: 12px;
+  }
+
+  .word-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .match-card {
+    flex: 0 0 100%;
+  }
+
+  .stage3-options {
+    grid-template-columns: 1fr;
+  }
 }
