@@ -35,16 +35,20 @@
     <section class="game-main">
       <section class="stage-panel active">
         <div class="stage4-layout">
-          <!-- 上方題目區 -->
+
+          <!-- 🔊 上方題目區（已新增喇叭按鈕） -->
           <div class="stage4-top">
             <div id="stage4-img" class="stage4-img">❔</div>
-            <div>
+
+            <div class="stage4-top-text">
               <div id="stage4-zh" class="stage4-zh">——</div>
-              <div class="stage4-en-hint">
-                題目會用英文念出單字，一起跟著唸唸看吧！
-              </div>
+              <div class="stage4-en-hint">題目會用英文念出單字，可以點喇叭重聽喔！</div>
             </div>
-            <div id="stage4-done-wrapper" style="margin-left:auto;font-size:16px;color:#e67e22;font-weight:600;">
+
+            <!-- 🔊 新增喇叭按鈕 -->
+            <button id="stage4-speak-btn" class="btn-audio stage4-audio-btn">🔊</button>
+
+            <div id="stage4-done-wrapper" class="stage4-done-display">
               已裝滿的火車：<span id="stage4-done">0</span> / 10
             </div>
           </div>
@@ -67,14 +71,10 @@
             </div>
           </div>
 
-          <!-- 下方按鈕區 -->
+          <!-- 下方按鈕 -->
           <div class="stage4-controls">
-            <button id="stage4-start" class="btn btn-primary big-btn">
-              🚆 出發
-            </button>
-            <button id="stage4-reset" class="btn btn-secondary big-btn">
-              🔁 重新開始
-            </button>
+            <button id="stage4-start" class="btn btn-primary big-btn">🚆 出發</button>
+            <button id="stage4-reset" class="btn btn-secondary big-btn">🔁 重新開始</button>
           </div>
 
           <p id="stage4-progress" class="stage4-progress"></p>
@@ -83,7 +83,7 @@
     </section>
   </main>
 
-  <!-- 煙火效果（共用） -->
+  <!-- 煙火效果 -->
   <div id="fireworks-overlay" class="fireworks-overlay hidden">
     <div class="fireworks-content">
       <div id="fireworks-text" class="fireworks-text">恭喜完成！</div>
