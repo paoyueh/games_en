@@ -9,11 +9,10 @@ let stage4AudioBtn = null; // 喇叭按鈕
 function initStage4Page() {
   renderGameInfoCommon();
 
-  // 取得喇叭按鈕
+  // 取得喇叭按鈕並綁定事件
   stage4AudioBtn = document.getElementById("stage4-audio-btn");
   if (stage4AudioBtn) {
     stage4AudioBtn.addEventListener("click", () => {
-      // 點喇叭時重播目前題目的英文
       if (stage4CurrentWord && stage4CurrentWord.en) {
         speak(stage4CurrentWord.en, "en-US");
       }
@@ -233,10 +232,11 @@ function finishStage4Game() {
   resetBtn.disabled = false;
 
   if (stage4AudioBtn) {
-    stage4AudioBtn.disabled = false; // 完成後仍可以回頭聽最後一題
+    stage4AudioBtn.disabled = false;
   }
 }
 
+// 頁面載入後，先讀取字庫 JSON，再初始化第四階段頁面
 document.addEventListener("DOMContentLoaded", () => {
   loadWordBankCommon(() => {
     initStage4Page();
