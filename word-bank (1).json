@@ -1,0 +1,848 @@
+{
+  "天氣Weather": [
+    {
+      "id": "天氣Weather-1",
+      "index": 1,
+      "zh": "晴天",
+      "en": "Sunny",
+      "emoji": "☀️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-2",
+      "index": 2,
+      "zh": "多雲",
+      "en": "Cloudy",
+      "emoji": "🌥️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-3",
+      "index": 3,
+      "zh": "雨天",
+      "en": "Rainy",
+      "emoji": "🌧️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-4",
+      "index": 4,
+      "zh": "陰天",
+      "en": "Overcast",
+      "emoji": "☁️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-5",
+      "index": 5,
+      "zh": "雷雨",
+      "en": "Stormy",
+      "emoji": "⛈️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-6",
+      "index": 6,
+      "zh": "有風",
+      "en": "Windy",
+      "emoji": "🌬️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-7",
+      "index": 7,
+      "zh": "下雪",
+      "en": "Snowy",
+      "emoji": "❄️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-8",
+      "index": 8,
+      "zh": "彩虹",
+      "en": "Rainbow",
+      "emoji": "🌈",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-9",
+      "index": 9,
+      "zh": "起霧",
+      "en": "Foggy",
+      "emoji": "🌫️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-10",
+      "index": 10,
+      "zh": "炎熱",
+      "en": "Hot",
+      "emoji": "🥵",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-11",
+      "index": 11,
+      "zh": "寒冷",
+      "en": "Cold",
+      "emoji": "🥶",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-12",
+      "index": 12,
+      "zh": "龍卷風",
+      "en": "Tornado",
+      "emoji": "🌪️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-13",
+      "index": 13,
+      "zh": "颱風",
+      "en": "Typhoon",
+      "emoji": "🌀",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-14",
+      "index": 14,
+      "zh": "多雲時晴",
+      "en": "Partly Sunny",
+      "emoji": "🌤️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-15",
+      "index": 15,
+      "zh": "毛毛雨",
+      "en": "Drizzle",
+      "emoji": "🌦️",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-16",
+      "index": 16,
+      "zh": "星星",
+      "en": "Stars",
+      "emoji": "⭐",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-17",
+      "index": 17,
+      "zh": "月亮",
+      "en": "Moon",
+      "emoji": "🌙",
+      "img": ""
+    },
+    {
+      "id": "天氣Weather-18",
+      "index": 18,
+      "zh": "太陽",
+      "en": "Sun",
+      "emoji": "🌞",
+      "img": ""
+    }
+  ],
+  "水果Fruits": [
+    {
+      "id": "水果Fruits-1",
+      "index": 1,
+      "zh": "蘋果",
+      "en": "Apple",
+      "emoji": "🍎",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-2",
+      "index": 2,
+      "zh": "香蕉",
+      "en": "Banana",
+      "emoji": "🍌",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-3",
+      "index": 3,
+      "zh": "橘子",
+      "en": "Orange",
+      "emoji": "🍊",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-4",
+      "index": 4,
+      "zh": "葡萄",
+      "en": "Grape",
+      "emoji": "🍇",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-5",
+      "index": 5,
+      "zh": "草莓",
+      "en": "Strawberry",
+      "emoji": "🍓",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-6",
+      "index": 6,
+      "zh": "鳳梨",
+      "en": "Pineapple",
+      "emoji": "🍍",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-7",
+      "index": 7,
+      "zh": "西瓜",
+      "en": "Watermelon",
+      "emoji": "🍉",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-8",
+      "index": 8,
+      "zh": "芒果",
+      "en": "Mango",
+      "emoji": "🥭",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-9",
+      "index": 9,
+      "zh": "檸檬",
+      "en": "Lemon",
+      "emoji": "🍋",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-10",
+      "index": 10,
+      "zh": "梨子",
+      "en": "Pear",
+      "emoji": "🍐",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-11",
+      "index": 11,
+      "zh": "櫻桃",
+      "en": "Cherry",
+      "emoji": "🍒",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-12",
+      "index": 12,
+      "zh": "藍莓",
+      "en": "Blueberry",
+      "emoji": "🫐",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-13",
+      "index": 13,
+      "zh": "奇異果",
+      "en": "Kiwi",
+      "emoji": "🥝",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-14",
+      "index": 14,
+      "zh": "酪梨",
+      "en": "Avocado",
+      "emoji": "🥑",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-15",
+      "index": 15,
+      "zh": "桃子",
+      "en": "Peach",
+      "emoji": "🍑",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-16",
+      "index": 16,
+      "zh": "椰子",
+      "en": "Coconut",
+      "emoji": "🥥",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-17",
+      "index": 17,
+      "zh": "哈密瓜",
+      "en": "Cantaloupe",
+      "emoji": "🍈",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-18",
+      "index": 18,
+      "zh": "火龍果",
+      "en": "Dragon fruit",
+      "emoji": "🔥🐉",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-19",
+      "index": 19,
+      "zh": "木瓜",
+      "en": "Papaya",
+      "emoji": "",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-20",
+      "index": 20,
+      "zh": "百香果",
+      "en": "Passion fruit",
+      "emoji": "",
+      "img": ""
+    },
+    {
+      "id": "水果Fruits-21",
+      "index": 21,
+      "zh": "芭樂",
+      "en": "Guava",
+      "emoji": "",
+      "img": ""
+    }
+  ],
+  "家族Family": [
+    {
+      "id": "家族Family-1",
+      "index": 1,
+      "zh": "媽媽",
+      "en": "mom",
+      "emoji": "👩",
+      "img": ""
+    },
+    {
+      "id": "家族Family-2",
+      "index": 2,
+      "zh": "媽媽",
+      "en": "mother",
+      "emoji": "👩",
+      "img": ""
+    },
+    {
+      "id": "家族Family-3",
+      "index": 3,
+      "zh": "爸爸",
+      "en": "dad",
+      "emoji": "👨",
+      "img": ""
+    },
+    {
+      "id": "家族Family-4",
+      "index": 4,
+      "zh": "爸爸",
+      "en": "father",
+      "emoji": "👨",
+      "img": ""
+    },
+    {
+      "id": "家族Family-5",
+      "index": 5,
+      "zh": "我",
+      "en": "me",
+      "emoji": "🙋‍♀️",
+      "img": ""
+    },
+    {
+      "id": "家族Family-6",
+      "index": 6,
+      "zh": "兄弟",
+      "en": "brother",
+      "emoji": "👦",
+      "img": ""
+    },
+    {
+      "id": "家族Family-7",
+      "index": 7,
+      "zh": "姐妹",
+      "en": "sister",
+      "emoji": "👧",
+      "img": ""
+    },
+    {
+      "id": "家族Family-8",
+      "index": 8,
+      "zh": "祖父",
+      "en": "grandpa",
+      "emoji": "👴",
+      "img": ""
+    },
+    {
+      "id": "家族Family-9",
+      "index": 9,
+      "zh": "祖父",
+      "en": "grandfather",
+      "emoji": "👴",
+      "img": ""
+    },
+    {
+      "id": "家族Family-10",
+      "index": 10,
+      "zh": "祖母",
+      "en": "grandma",
+      "emoji": "👵",
+      "img": ""
+    },
+    {
+      "id": "家族Family-11",
+      "index": 11,
+      "zh": "祖母",
+      "en": "grandmother",
+      "emoji": "👵",
+      "img": ""
+    },
+    {
+      "id": "家族Family-12",
+      "index": 12,
+      "zh": "叔叔 / 伯伯 / 舅舅",
+      "en": "uncle",
+      "emoji": "👨‍💼",
+      "img": ""
+    },
+    {
+      "id": "家族Family-13",
+      "index": 13,
+      "zh": "阿姨 / 姑姑 / 嬸嬸",
+      "en": "aunt",
+      "emoji": "👩‍💼",
+      "img": ""
+    },
+    {
+      "id": "家族Family-14",
+      "index": 14,
+      "zh": "表(堂)兄弟姊妺",
+      "en": "cousin",
+      "emoji": "👦👧",
+      "img": ""
+    }
+  ],
+  "動物Animal": [
+    {
+      "id": "動物Animal-1",
+      "index": 1,
+      "zh": "一隻貓",
+      "en": "a cat",
+      "emoji": "🐱",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-2",
+      "index": 2,
+      "zh": "一隻牛",
+      "en": "a cow",
+      "emoji": "🐮",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-3",
+      "index": 3,
+      "zh": "一隻山羊",
+      "en": "a goat",
+      "emoji": "🐐",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-4",
+      "index": 4,
+      "zh": "一隻雞",
+      "en": "a chicken",
+      "emoji": "🐔",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-5",
+      "index": 5,
+      "zh": "一隻綿羊",
+      "en": "a sheep",
+      "emoji": "🐑",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-6",
+      "index": 6,
+      "zh": "一匹馬",
+      "en": "a horse",
+      "emoji": "🐴",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-7",
+      "index": 7,
+      "zh": "一隻狗",
+      "en": "a dog",
+      "emoji": "🐶",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-8",
+      "index": 8,
+      "zh": "一隻烏龜",
+      "en": "a turtle",
+      "emoji": "🐢",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-9",
+      "index": 9,
+      "zh": "一隻鴨子",
+      "en": "a duck",
+      "emoji": "🦆",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-10",
+      "index": 10,
+      "zh": "走路",
+      "en": "walking",
+      "emoji": "🚶",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-11",
+      "index": 11,
+      "zh": "飛行",
+      "en": "flying",
+      "emoji": "🕊️",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-12",
+      "index": 12,
+      "zh": "攀爬",
+      "en": "climbing",
+      "emoji": "🧗",
+      "img": ""
+    },
+    {
+      "id": "動物Animal-13",
+      "index": 13,
+      "zh": "游泳",
+      "en": "swimming",
+      "emoji": "🏊",
+      "img": ""
+    }
+  ],
+  "Fun in Class": [
+    {
+      "id": "Fun in Class-1",
+      "index": 1,
+      "zh": "著色",
+      "en": "coloring",
+      "emoji": "🖍️",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-2",
+      "index": 2,
+      "zh": "數數",
+      "en": "counting",
+      "emoji": "🔢",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-3",
+      "index": 3,
+      "zh": "剪紙 / 剪裁",
+      "en": "cutting",
+      "emoji": "✂️",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-4",
+      "index": 4,
+      "zh": "繪畫",
+      "en": "drawing",
+      "emoji": "🎨",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-5",
+      "index": 5,
+      "zh": "擦拭 / 擦除",
+      "en": "erasing",
+      "emoji": "🧽",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-6",
+      "index": 6,
+      "zh": "黏貼",
+      "en": "gluing",
+      "emoji": "🧴",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-7",
+      "index": 7,
+      "zh": "說話 / 交談",
+      "en": "talking",
+      "emoji": "🗣️",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-8",
+      "index": 8,
+      "zh": "閱讀",
+      "en": "reading",
+      "emoji": "📖",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-9",
+      "index": 9,
+      "zh": "寫作",
+      "en": "writing",
+      "emoji": "✍️",
+      "img": ""
+    },
+    {
+      "id": "Fun in Class-10",
+      "index": 10,
+      "zh": "聽 / 傾聽",
+      "en": "listening",
+      "emoji": "👂",
+      "img": ""
+    }
+  ],
+  "Boots and Bathing Suits": [
+    {
+      "id": "Boots and Bathing Suits-1",
+      "index": 1,
+      "zh": "靴子",
+      "en": "boots",
+      "emoji": "🥾",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-2",
+      "index": 2,
+      "zh": "夾克 / 外套",
+      "en": "jacket",
+      "emoji": "🧥",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-3",
+      "index": 3,
+      "zh": "手套",
+      "en": "gloves",
+      "emoji": "🧤",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-4",
+      "index": 4,
+      "zh": "雨衣",
+      "en": "raincoat",
+      "emoji": "🧥☔",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-5",
+      "index": 5,
+      "zh": "泳衣",
+      "en": "bathing suit",
+      "emoji": "🩱",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-6",
+      "index": 6,
+      "zh": "帽子",
+      "en": "hat",
+      "emoji": "🧢",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-7",
+      "index": 7,
+      "zh": "牛仔褲",
+      "en": "jeans",
+      "emoji": "👖",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-8",
+      "index": 8,
+      "zh": "短褲",
+      "en": "shorts",
+      "emoji": "🩳",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-9",
+      "index": 9,
+      "zh": "球鞋 / 運動鞋",
+      "en": "sneakers",
+      "emoji": "👟",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-10",
+      "index": 10,
+      "zh": "一把雨傘",
+      "en": "an umbrella",
+      "emoji": "☂️",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-11",
+      "index": 11,
+      "zh": "大衣 / 長外衣",
+      "en": "a coat",
+      "emoji": "🧥",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-12",
+      "index": 12,
+      "zh": "襯衫",
+      "en": "shirt",
+      "emoji": "👕",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-13",
+      "index": 13,
+      "zh": "襪子",
+      "en": "socks",
+      "emoji": "🧦",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-14",
+      "index": 14,
+      "zh": "鞋子",
+      "en": "shoes",
+      "emoji": "👞",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-15",
+      "index": 15,
+      "zh": "穿上",
+      "en": "put on",
+      "emoji": "",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-16",
+      "index": 16,
+      "zh": "脫下",
+      "en": "take off",
+      "emoji": "",
+      "img": ""
+    },
+    {
+      "id": "Boots and Bathing Suits-17",
+      "index": 17,
+      "zh": "不要忘記",
+      "en": "don't forget",
+      "emoji": "💡",
+      "img": ""
+    }
+  ],
+  "Fun in the Sun": [
+    {
+      "id": "Fun in the Sun-1",
+      "index": 1,
+      "zh": "放風箏",
+      "en": "fly a kite",
+      "emoji": "🪁",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-2",
+      "index": 2,
+      "zh": "跳繩",
+      "en": "jump rope",
+      "emoji": "🪢",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-3",
+      "index": 3,
+      "zh": "玩遊戲",
+      "en": "play a game",
+      "emoji": "🎮",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-4",
+      "index": 4,
+      "zh": "打棒球",
+      "en": "play baseball",
+      "emoji": "⚾",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-5",
+      "index": 5,
+      "zh": "打籃球",
+      "en": "play basketball",
+      "emoji": "🏀",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-6",
+      "index": 6,
+      "zh": "踢足球",
+      "en": "play soccer",
+      "emoji": "⚽",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-7",
+      "index": 7,
+      "zh": "騎腳踏車",
+      "en": "ride a bike",
+      "emoji": "🚲",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-8",
+      "index": 8,
+      "zh": "丟球",
+      "en": "throw a ball",
+      "emoji": "☄️",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-9",
+      "index": 9,
+      "zh": "接球",
+      "en": "catch a ball",
+      "emoji": "🧤",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-10",
+      "index": 10,
+      "zh": "拍球 / 運球",
+      "en": "bounce a ball",
+      "emoji": "⛹️",
+      "img": ""
+    },
+    {
+      "id": "Fun in the Sun-11",
+      "index": 11,
+      "zh": "玩捉迷藏 / 鬼抓人",
+      "en": "play tag",
+      "emoji": "🏃‍♂️🏃‍♀️",
+      "img": ""
+    }
+  ]
+}
